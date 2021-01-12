@@ -1,0 +1,10 @@
+<Objects>
+	<ABTesting>
+		<ElementalSelenium>Elemental Selenium</ElementalSelenium>
+	</ABTesting>
+	<DynamicContent>
+		<DynamicContentText>//div[contains(@class,'large')]//div[@class='large-10 columns']</DynamicContentText>
+		<DynamicContentLinkText>Dynamic Content</DynamicContentLinkText>
+		<ClickHereLinkText>click here</ClickHereLinkText>
+	</DynamicContent>
+</Objects>
