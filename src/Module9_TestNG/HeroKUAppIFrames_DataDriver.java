@@ -16,16 +16,16 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class HeroKUAppIFrames_DataDriver extends Selenium_WorkingWithDriver_TestNG {
-	
+
 	By oFrameLinkText = By.linkText("Frames");
 	By oIFrameLinkText = By.linkText("iFrame");
 	By oIFrameXPath = By.xpath("//body[@id='tinymce'][@contenteditable='true']");
-	
+
 	@BeforeTest
 	public void setPrerequisitesForTestNG () {
-		System.out.println("Entered BeforeTest");	
+		System.out.println("Entered BeforeTest");
 	}
-	
+
 	@BeforeMethod
 	public void RefreshPage () {
 		List<WebElement> oFrameLinks = driver.findElements(oFrameLinkText);
@@ -34,20 +34,20 @@ public class HeroKUAppIFrames_DataDriver extends Selenium_WorkingWithDriver_Test
 		}
 		else {
 			WebElement oFrameLink = driver.findElement(oFrameLinkText);
-			oFrameLink.click();			
+			oFrameLink.click();
 			WebElement oIFrameLink = driver.findElement(oIFrameLinkText);
 			oIFrameLink.click();
 		}
 	}
-	
-//	@Test(dataProvider="returnDataFromDataProvider", dataProviderClass = GetDataFromDataProvider.class)
+
+	//	@Test(dataProvider="returnDataFromDataProvider", dataProviderClass = GetDataFromDataProvider.class)
 	@Test(dataProvider = "returnDataThroughDataProvider")
 	public void typeInEditor (String sTestCaseID, String sRun, String sTextToType, String sSpecialEffects) {
-		
+
 		//Retrieving generic value from Properties file for special effects xPath
 //		String sSpecialEffectsXPath = "";
 		String sSpecialEffectsCSS = "";
-		
+
 		try {
 //			sSpecialEffectsXPath = returnValueFromPropertiesFile("sIFramesSpecialEffectsXPath");
 			sSpecialEffectsCSS = returnValueFromPropertiesFile("sIframesSpecialEffectsCSS");
@@ -56,21 +56,21 @@ public class HeroKUAppIFrames_DataDriver extends Selenium_WorkingWithDriver_Test
 			System.out.println("Properties File not found");
 			e.printStackTrace();
 		}
-		
+
 		//Clearing the text in frame
 		driver.switchTo().frame(0);
 		WebElement oIFrame = driver.findElement(oIFrameXPath);
 		oIFrame.clear();
-		
+
 		//Splitting sTextToType and sSpecialEffects to type text in Editor with different special effects
 		String[] arrTextToType = sTextToType.split(";");
 		String[] arrSpecialEffects = sSpecialEffects.split(";");
-		
+
 		//Initializing oButton
 		WebElement oButton;
-		
+
 		for (int i = 0; i < arrTextToType.length; i ++) {
-			
+
 			//Selecting text special effects
 			driver.switchTo().defaultContent();
 //			switch (arrSpecialEffects [i])
@@ -146,21 +146,21 @@ public class HeroKUAppIFrames_DataDriver extends Selenium_WorkingWithDriver_Test
 
 			//Printing in console
 			System.out.println("Special Effects Parameter called is - "+arrSpecialEffects [i]);
-			
+
 			//Switching driver to iFrame
 			driver.switchTo().frame(0);
-		
+
 			//Typing in WSIWYG editor
 			oIFrame.sendKeys(arrTextToType [i]);
 			oIFrame.sendKeys(Keys.RETURN);
-			
+
 			//Switching driver to default content
 			driver.switchTo().defaultContent();
-			
+
 			//Clicking on special effects button
 			oButton.click();
 		}
-		
+
 		//Waiting for 5 seconds
 		try {
 			Thread.sleep(5000);
@@ -168,14 +168,16 @@ public class HeroKUAppIFrames_DataDriver extends Selenium_WorkingWithDriver_Test
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
+
 	}
-	
+
 	@DataProvider
 	public Object[][] returnDataThroughDataProvider () {
 		GetDataFromDataProvider obGetDataFromDataProvider = new GetDataFromDataProvider ();
-		Object[][] rowDataArray = obGetDataFromDataProvider.returnDataFromDataProvider 
-			("C:\\ashish\\Training\\Selenium\\Web Driver\\SeleniumTraining_AshishThakur\\src\\Module9_TestNG\\DataDriver\\DataDriver_IFrame_TinyMCE_WYSIWYG_Editor.xlsx", "IFrames_WYSIWYGEditor");
+		Object[][] rowDataArray = obGetDataFromDataProvider.returnDataFromDataProvider
+				("C:\\ashish\\Training\\Selenium\\Web Driver\\SeleniumTraining_AshishThakur" +
+								"\\src\\Module9_TestNG\\DataDriver\\DataDriver_IFrame_TinyMCE_WYSIWYG_Editor.xlsx",
+						"IFrames_WYSIWYGEditor");
 		for (Object[] objects : rowDataArray) {
 			for (Object object : objects) {
 				System.out.println(object + "	");
@@ -183,10 +185,9 @@ public class HeroKUAppIFrames_DataDriver extends Selenium_WorkingWithDriver_Test
 		}
 		return rowDataArray;
 	}
-	
+
 	@AfterMethod
 	public void RefreshPage1 () {
-		
 		System.out.println("Entered after method");
 		WebDriverWait wait = new WebDriverWait (driver, 4);
 		Boolean isNotVisible = wait.until(ExpectedConditions.invisibilityOfElementLocated(oFrameLinkText));
@@ -196,12 +197,12 @@ public class HeroKUAppIFrames_DataDriver extends Selenium_WorkingWithDriver_Test
 		}
 		else {
 			WebElement oFrameLink = driver.findElement(oFrameLinkText);
-			oFrameLink.click();			
+			oFrameLink.click();
 			WebElement oIFrameLink = driver.findElement(oIFrameLinkText);
 			oIFrameLink.click();
 		}
 	}
-	
+
 	@AfterTest
 	public void afterTest () {
 		System.out.println("This is a test");
