@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.DateFormat;
@@ -16,8 +15,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-
-import junit.framework.Test;
 
 import org.apache.commons.io.FileUtils;
 import org.dom4j.Document;
@@ -39,7 +36,6 @@ import org.testng.annotations.BeforeClass;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
 
 
 public class Selenium_WorkingWithDriver_TestNG {
@@ -137,10 +133,7 @@ public class Selenium_WorkingWithDriver_TestNG {
 	}
 	
 	
-	public void validateElementOnPage (WebElement elementObject) {
-		
-		//Retrieving driver
-		driver = getChromeDriver();
+	public void validateElementOnPage(WebDriver driver, WebElement elementObject) {
 		
 		//Making a wait object (Explicit wait)
 		WebDriverWait wait =  new WebDriverWait (driver, 20);
