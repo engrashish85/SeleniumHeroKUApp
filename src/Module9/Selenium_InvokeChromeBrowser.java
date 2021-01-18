@@ -57,11 +57,8 @@ public class Selenium_InvokeChromeBrowser {
 			//Implicit wait
 			driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 
-			return driver;
-			}
-		else {
-			return driver;
-		}		
+		}
+		return driver;
 	}
 	
 	public ArrayList <String> InvokeChrome (String sURL) {
