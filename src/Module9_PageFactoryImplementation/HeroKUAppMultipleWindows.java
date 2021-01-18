@@ -51,6 +51,12 @@ public class HeroKUAppMultipleWindows extends Selenium_InvokeChromeBrowser {
             }
         }
         System.out.println("New Window titles are - "+count);
+        Object[] windowsToBeClosed = allWindows.toArray();
+        for (int i=count; i>0; i--) {
+            driver.switchTo().window(windowsToBeClosed[i].toString());
+            driver.close();
+        }
+        driver.switchTo().window(windowsToBeClosed[0].toString());
     }
 
     @AfterMethod
