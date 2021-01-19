@@ -24,7 +24,10 @@ public class HeroKUAppMainPage extends Selenium_WorkingWithDriver_TestNG {
 	
 	@FindBy (how = How.LINK_TEXT, using = "Inputs")
 	public WebElement oInputsLink;
-	
+
+	@FindBy(how = How.LINK_TEXT, using = "JavaScript Alerts")
+	public WebElement javaScriptAlertsLink;
+
 	public void clickGeoLocationLink () {
 		System.out.println("Entered clickGeoLocationLink");
 		oGeolocationLink.click();

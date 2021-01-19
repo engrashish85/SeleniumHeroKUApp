@@ -1,26 +1,23 @@
 package Module9_PageObjectModel;
 
-import java.io.IOException;
-import java.util.List;
-
+import Module9_TestNG.Selenium_WorkingWithDriver_TestNG;
+import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-import com.relevantcodes.extentreports.LogStatus;
-import com.relevantcodes.extentreports.model.Test;
-
-import Module9_TestNG.Selenium_WorkingWithDriver_TestNG;
+import java.io.IOException;
+import java.util.List;
 
 public class HeroKUAppHoversPage extends Selenium_WorkingWithDriver_TestNG {
 	
 	@FindBy (how=How.XPATH, using="//img[@alt='User Avatar'][contains(@src, 'avatar')]")
 	private List <WebElement> oHoverImageList;
-	
+
 	@FindBy (how=How.LINK_TEXT, using = "View profile")
 	private WebElement oViewProfileLink;
-	
+
 	
 	public void ValidateUserID (int iUserID) throws IOException {
 		
@@ -42,7 +39,7 @@ public class HeroKUAppHoversPage extends Selenium_WorkingWithDriver_TestNG {
 		String sUserIDText = sUserIDMouseHoverText.replace("name:", "").trim();
 		System.out.println("sUserIDText - "+sUserIDText);
 		
-		String sUserIDText1 = "name: user"+String.valueOf(iUserID);
+		String sUserIDText1 = "name: user"+ iUserID;
 		System.out.println("sUserIDText1 - "+sUserIDText1);
 		
 		//if (("user"+String.valueOf(iUserID)).equals(sUserIDText)) {
@@ -50,7 +47,7 @@ public class HeroKUAppHoversPage extends Selenium_WorkingWithDriver_TestNG {
 			
 			//Reporting to extent reports
 			test.log(LogStatus.PASS, test.addScreenCapture(obSelenium_WorkingWithDriver_TestNG.screenCapture
-					(driver, sCurrentClassName)) + "UserID - " + "user"+String.valueOf(iUserID) + 
+					(driver, sCurrentClassName)) + "UserID - " + "user"+ iUserID +
 					" is matching with - "+ sUserIDText1);
 			
 		}
@@ -59,7 +56,7 @@ public class HeroKUAppHoversPage extends Selenium_WorkingWithDriver_TestNG {
 			
 			//Reporting to extent reports
 			test.log(LogStatus.FAIL, test.addScreenCapture(obSelenium_WorkingWithDriver_TestNG.screenCapture
-					(driver, sCurrentClassName)) + "UserID - " + "user"+String.valueOf(iUserID) + 
+					(driver, sCurrentClassName)) + "UserID - " + "user"+ iUserID +
 					" is NOT matching with - "+ sUserIDText1);
 		
 		}
@@ -77,7 +74,7 @@ public class HeroKUAppHoversPage extends Selenium_WorkingWithDriver_TestNG {
 		
 		//Reporting to extent reports
 		test.log(LogStatus.INFO, test.addScreenCapture(obSelenium_WorkingWithDriver_TestNG.screenCapture
-				(driver, sCurrentClassName)) + "Naivgated to user"+String.valueOf(iUserID)+ " page");
+				(driver, sCurrentClassName)) + "Navigated to user"+ iUserID + " page");
 		
 		//Navigating to the back page in browser
 		driver.navigate().back();

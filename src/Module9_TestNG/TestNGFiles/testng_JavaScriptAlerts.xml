@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite 1">
+  	<test name="Test 1">
+		<parameter name="alertsType" value="JS Alert"/>
+    	<classes>
+			<class name="Module9_TestNG.HeroKUAppJavaScriptAlerts_TestNG"/>
+    	</classes>
+  	</test>
+	<test name="Test 2">
+		<parameter name="alertsType" value="JS Confirm"/>
+		<classes>
+			<class name="Module9_TestNG.HeroKUAppJavaScriptAlerts_TestNG"/>
+		</classes>
+	</test>
+	<test name="Test 3">
+		<parameter name="alertsType" value="JS Dismiss"/>
+		<classes>
+			<class name="Module9_TestNG.HeroKUAppJavaScriptAlerts_TestNG"/>
+		</classes>
+	</test>
+	<test name="Test 4">
+		<parameter name="alertsType" value="JS Prompt"/>
+		<classes>
+			<class name="Module9_TestNG.HeroKUAppJavaScriptAlerts_TestNG"/>
+		</classes>
+	</test>
+</suite>

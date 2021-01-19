@@ -37,8 +37,7 @@ public class HeroKUAppInfiniteScrollsPage extends Selenium_WorkingWithDriver_Tes
 			//Reporting results to extent reports
 			test.log(LogStatus.INFO, obSelenium_WorkingWithDriver_TestNG.screenCapture(driver, sCurrentClassName) + 
 					"Executing scrollBy statement with the corresponding x and y coordinates");
-			
-			
+
 		}
 				
 	}
