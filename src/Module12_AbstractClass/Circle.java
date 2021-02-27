@@ -1,7 +1,5 @@
 package Module12_AbstractClass;
 
-import Module5.C;
-
 class Circle extends GraphicObject{
     void draw() {
         System.out.println("circle draw is called");
